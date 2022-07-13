@@ -45,7 +45,7 @@ static char	*ft_num_tostring(char *ptr, long num, int len, int sign)
 	return (ptr);
 }
 
-static char	*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*str;
@@ -62,15 +62,26 @@ static char	*ft_itoa(int n)
 	return (str);
 }
 
-int	ft_putnbr(int n)
+int	ft_putnbr(int n, t_print *tab)
 {
     int		len;
 	char	*num;
-
+	char	*num_w;
+	
 	len = 0;
 	num = ft_itoa(n);
-	len = ft_printstr(num);
-	free(num);
+	num_w = NULL;
+	if (tab->wdt > 0 && tab->wdt > (int)ft_strlen(num))
+	{
+		num_w = ft_apply_width(num,tab);
+		len = ft_printstr(num_w);
+		free(num_w);
+	}
+	else
+	{
+		len = ft_printstr(num);
+		free(num);
+	}
 	return (len);
 }
 

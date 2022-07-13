@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../include/libft.h"
+#include "libft.h"
 
 static char	*ft_strcpy(char *cadena1, const char *cadena2)
 {

@@ -24,7 +24,7 @@ t_print *ft_init_tab(t_print *tab)
       tab->is_zero = 0;                        
       tab->dash = 0;                        
       tab->perc = 0;                        
-      tab->sp = 0;                        
+      tab->space = 0;                        
       return (tab);                       
 }
 
@@ -48,8 +48,9 @@ int ft_printf(char const *str, ...)
     {
         if (str[cont] == '%')
         {
-            lenght_print += ft_evaluate_flags(tab,str,cont+1); 
             cont++;
+            lenght_print += ft_evaluate_flags(tab,str,&cont); 
+            
         }
         else
             lenght_print += ft_print_char(str[cont]);
@@ -64,7 +65,12 @@ int ft_printf(char const *str, ...)
 int main(void)
 {
   //ft_printf("%i\n%i\n%i\n%i\n%i\n%i\n%i\n", 10, 23, -2, 37, 200, -9999, 977779);  
-  ft_printf("%   d\n",-1);
-   printf("%   d",-1);
+  //ft_printf("%   d\n",-1);
+   //printf("%   d\n",-1);
+   //ft_printf("%12d\n",5678);
+   //printf("%12d\n",5678);
+   //void *ptr = NULL;
+   printf("%5c",'c');
+   // printf("%05d\n",12);
   //system("leaks a.out");
 }

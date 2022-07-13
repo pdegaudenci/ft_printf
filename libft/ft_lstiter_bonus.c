@@ -9,7 +9,8 @@
 /*   Updated: 2022/06/29 19:01:22 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../include/libft.h"
+
+#include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

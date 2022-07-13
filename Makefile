@@ -12,6 +12,9 @@ SRCS =  ft_printf.c \
 		src/ft_printstr.c \
 		src/ft_unsigned.c \
 		src/ft_utils.c \
+		src/ft_apply_flags.c \
+		libft/ft_strjoin.c \
+		libft/ft_memmove.c
 		
 		
 SURPL_O = 	ft_evaluate_format.o \
@@ -21,10 +24,13 @@ SURPL_O = 	ft_evaluate_format.o \
 			ft_printstr.o \
 			ft_unsigned.o \
 			ft_utils.o \
+			ft_apply_flags.o \
+			ft_strjoin.o \
+			ft_memmove.o
 
 CC = gcc
 
-FLAGS = -c -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I./includes
 
