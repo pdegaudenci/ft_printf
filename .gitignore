@@ -1,2 +1,4 @@
 printfTester/
 ft_printf_tester/
+.DS_Store
+*.out
