@@ -1,4 +1,5 @@
 #include "../include/ft_printf.h"
+
 int	ft_num_len(unsigned	int num)
 {
 	int	len;
@@ -31,7 +32,7 @@ char	*ft_uitoa(unsigned int n)
 	return (num);
 }
 
-int	ft_print_unsigned(unsigned int n)
+int	ft_print_unsigned(unsigned int n, t_print *tab)
 {
 	int		cont;
 	char	*num;
@@ -39,7 +40,7 @@ int	ft_print_unsigned(unsigned int n)
 	cont = 0;
 	if (n == 0)
 		cont += write(1, "0", 1);
-	else
+	else if (n > 0 || tab->wdt > 0 )
 	{
 		num = ft_uitoa(n);
 		cont += ft_printstr(num);
@@ -47,3 +48,4 @@ int	ft_print_unsigned(unsigned int n)
 	}
 	return (cont);
 }
+

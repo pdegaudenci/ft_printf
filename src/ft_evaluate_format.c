@@ -44,6 +44,21 @@ void    ft_evaluate_width(t_print *tab,const char *c, int *pos)
     }
 }
 
+int	ft_isformat(char c)
+{
+	if (c == 'c' || c == 's')
+		return(0);
+	if (c == 'p')
+		return(0);
+	if (c == 'd' || c == 'i' || c == 'u')
+		return(0);
+	if (c == 'x' || c == 'X')
+		return(0);
+	if (c == '%')
+		return(0);
+	return (1);
+}
+
 int ft_format(t_print *tab,char c)
 {
     int cont;
@@ -60,7 +75,7 @@ int ft_format(t_print *tab,char c)
     else if (c == 'x' || c == 'X')
 		cont += ft_print_hex(va_arg(tab->args, unsigned int), c);
         	else if (c == 'u')
-		cont += ft_print_unsigned(va_arg(tab->args, unsigned int));
+		cont += ft_print_unsigned(va_arg(tab->args, unsigned int),tab);
     else if (c == '%')
 		cont += ft_percent();
     return (cont);

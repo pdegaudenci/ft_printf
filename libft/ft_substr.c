@@ -21,8 +21,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if ((size_t)start > ft_strlen(s))
 		return (ft_strdup(""));
-	/*if (len > ft_strlen(s)) // MODIFICAR ORIGINAL CON ESTA CONDICION
-		len = ft_strlen(s); --> No pasa mulinette*/
+	if (len > ft_strlen(s)) 
+		len = ft_strlen(s); 
 	str = malloc(sizeof(char) * (len + 1));
 	cont = 0;
 	if (!str)

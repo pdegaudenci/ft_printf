@@ -11,28 +11,36 @@ SRCS =  ft_printf.c \
 		src/ft_pointer.c \
 		src/ft_printstr.c \
 		src/ft_unsigned.c \
-		src/ft_utils.c \
-		src/ft_apply_flags.c \
+		src/ft_flags_nbr.c \
 		libft/ft_strjoin.c \
-		libft/ft_memmove.c
-		
-		
+		libft/ft_memmove.c \
+		libft/ft_itoa.c \
+		libft/ft_strlen.c \
+		libft/ft_strdup.c \
+		libft/ft_calloc.c \
+		libft/ft_bzero.c \
+		libft/ft_substr.c
+			
 SURPL_O = 	ft_evaluate_format.o \
 			ft_hex.o \
 			ft_numbers.o \
 			ft_pointer.o \
 			ft_printstr.o \
 			ft_unsigned.o \
-			ft_utils.o \
-			ft_apply_flags.o \
+			ft_flags_nbr.o \
 			ft_strjoin.o \
-			ft_memmove.o
-
+			ft_memmove.o \
+			ft_itoa.o \
+			ft_strlen.o \
+			ft_strdup.o \
+			ft_calloc.o \
+			ft_bzero.o \
+			ft_substr.o
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -c -Wall -Wextra -Werror
 
-INCLUDES = -I./includes
+INCLUDES = -I./include
 
 OBJS = $(SRCS:.c=.o)
 
@@ -52,6 +60,9 @@ clean :
 fclean : clean
 	$(MAKE) fclean -C ./libft
 	rm -rf $(NAME)
+bonus: $(NAME)
+
 test:
-	$(CC) $(FLAGS) $(SRCS)
+	$(CC) $(SRCS)
+	
 re : fclean all

@@ -19,6 +19,8 @@
 # include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
+# include <limits.h>
+# include <stddef.h>
 
 typedef struct s_print                       
 {                        
@@ -41,7 +43,7 @@ int     ft_printf(char const *str, ...);
 int	ft_isformat(char c);
 int ft_evaluate_flags(t_print *tab, const char *str, int *pos);
 void    ft_evaluate_width(t_print *tab,const char *c, int *pos);
-
+void ft_fill(t_print *tab, char *fill, int cont);
 char	*ft_apply_width(char *num, t_print *tab);
 int	    ft_putnbr(int n,t_print *tab);
 int ft_print_char(int c);
@@ -54,8 +56,8 @@ void	ft_put_hex(unsigned int num, const char format);
 int	ft_print_hex(unsigned int num, const char format);
 int	ft_print_ptr(unsigned long long ptr);
 char	*ft_uitoa(unsigned int n);
-int	ft_print_unsigned(unsigned int n);
-int	ft_num_len(unsigned	int num);
+int	ft_print_unsigned(unsigned int n, t_print *tab);
+int	ft_num_len(unsigned int num);
 int	ft_percent(void);
 # endif
 
