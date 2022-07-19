@@ -34,7 +34,8 @@ void    ft_evaluate_width(t_print *tab,const char *c, int *pos)
 {
     if (c[*pos] == '0')
     {
-        tab->zero = 1;
+        if ( tab->dash == 0)
+            tab->zero = 1;
         *pos = *pos + 1;
     }
     while (c[*pos] >= '0' && c[*pos] <='9')
@@ -59,24 +60,24 @@ int	ft_isformat(char c)
 	return (1);
 }
 
-int ft_format(t_print *tab,char c)
+int ft_format(t_print *tab,char format)
 {
     int cont;
 
     cont = 0;
-    if (c == 'c')
-        cont += ft_print_char(va_arg(tab->args, int));
-    else if(c == 'i' || c == 'd')
+    if (format == 'c')
+        cont += ft_printchar_format(va_arg(tab->args, int),tab);
+    else if(format == 'i' || format == 'd')
         cont += ft_putnbr(va_arg(tab->args, int), tab);
-    else if (c == 'p')
+    else if (format == 'p')
         cont  += ft_print_ptr(va_arg(tab->args, unsigned long long));
-    else if (c == 's')
-		cont += ft_printstr(va_arg(tab->args, char *));
-    else if (c == 'x' || c == 'X')
-		cont += ft_print_hex(va_arg(tab->args, unsigned int), c);
-        	else if (c == 'u')
+    else if (format == 's')
+		cont += ft_printstr_format(va_arg(tab->args, char *), tab);
+    else if (format == 'x' || format == 'X')
+		cont += ft_print_hex(va_arg(tab->args, unsigned int), format,tab);
+    else if (format == 'u')
 		cont += ft_print_unsigned(va_arg(tab->args, unsigned int),tab);
-    else if (c == '%')
+    else if (format == '%')
 		cont += ft_percent();
     return (cont);
 }

@@ -11,7 +11,9 @@ SRCS =  ft_printf.c \
 		src/ft_pointer.c \
 		src/ft_printstr.c \
 		src/ft_unsigned.c \
+		src/ft_char.c \
 		src/ft_flags_nbr.c \
+		src/ft_flags_str.c \
 		libft/ft_strjoin.c \
 		libft/ft_memmove.c \
 		libft/ft_itoa.c \
@@ -20,6 +22,7 @@ SRCS =  ft_printf.c \
 		libft/ft_calloc.c \
 		libft/ft_bzero.c \
 		libft/ft_substr.c
+
 			
 SURPL_O = 	ft_evaluate_format.o \
 			ft_hex.o \
@@ -35,7 +38,9 @@ SURPL_O = 	ft_evaluate_format.o \
 			ft_strdup.o \
 			ft_calloc.o \
 			ft_bzero.o \
-			ft_substr.o
+			ft_substr.o \
+			ft_flags_str.o \
+			ft_char.o
 CC = gcc
 
 FLAGS = -c -Wall -Wextra -Werror

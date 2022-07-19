@@ -47,17 +47,21 @@ void ft_fill(t_print *tab, char *fill, int cont);
 char	*ft_apply_width(char *num, t_print *tab);
 int	    ft_putnbr(int n,t_print *tab);
 int ft_print_char(int c);
+int ft_printchar_format(int c, t_print *tab);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *s);
-int	ft_printstr(char *st);
+int	ft_printstr(char *str);
+int ft_printstr_format(char *str, t_print *tab);
 void	ft_putstr(char *str);
 int	ft_hex_len(unsigned	int num);
 void	ft_put_hex(unsigned int num, const char format);
-int	ft_print_hex(unsigned int num, const char format);
+int	ft_print_hex(unsigned int num, const char format, t_print *tab);
 int	ft_print_ptr(unsigned long long ptr);
 char	*ft_uitoa(unsigned int n);
 int	ft_print_unsigned(unsigned int n, t_print *tab);
 int	ft_num_len(unsigned int num);
 int	ft_percent(void);
+char	*ft_apply_width_str(char *str, t_print *tab);
+int put_wdt(t_print *tab);
 # endif
 

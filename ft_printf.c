@@ -61,20 +61,19 @@ int ft_printf(char const *str, ...)
     return (lenght_print);
 
 }
-/*
+
 int main(void)
-{
+{/*
+        ---- BASICOS ---
   //ft_printf("%i\n%i\n%i\n%i\n%i\n%i\n%i\n", 10, 23, -2, 37, 200, -9999, 977779);  
   //ft_printf("%   d\n",-1);
    //printf("%   d\n",-1);
    //ft_printf("%12d\n",5678);
    //printf("%12d\n",5678);
    //void *ptr = NULL;
+ 
    //printf("%5c",'c');
  
-  
-   printf("Salidas PRINTF \n");
-
 printf(" %05d ", -15);
 printf(" %06d ", -16);
 
@@ -98,16 +97,15 @@ ft_printf(" %06d ", -16);
 ft_printf(" %09d %010d %011d %012d %013d %014d %015d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 ft_printf("Numero int min : %010d \n",INT_MAX);
 printf("Numro int min     : %010d \n",INT_MIN);
-//ft_printf("    %014d %015d\n", , , , 0, -42);
-//printf(" %013d \n", ULONG_MAX);
-//ft_printf("%015d \n", -42);
+ft_printf("    %014d %015d\n", , , , 0, -42);
+printf(" %013d \n", ULONG_MAX);
+ft_printf("%015d \n", -42);
  
- printf(" %04u \n", 9);
+ // UNSIGNED
+printf(" %04u \n", 9);
 printf(" %01u\n ", 10);
 ft_printf(" %04u \n", 9);
 ft_printf(" %01u\n ", 10);
-
-
 
 ft_printf("  %020u  \n", -10);
 printf("%020u  \n", -10);
@@ -118,9 +116,46 @@ printf("%020u  \n", -10);
 //ft_printf(" %014u ", ULONG_MAX);
 //printf("%014u %015u\n",  0, -42);
 //ft_printf("%014u %015u\n",  0, -42);
+////printf("%12u\n",  0);
+ft_printf("%010u\n",  0);test
+
+ft_printf("%04u\n ", 9);
+ft_printf("%01u \n", 10);
+printf(" %012u h\n", LONG_MIN);
+ft_printf(" %012u ", LONG_MIN);
 //printf("%u\n",  0);
 //ft_printf("%u\n",  0);
-////printf("%12u\n",  0);
-ft_printf("%010u\n",  0);
+//printf("%u\n", LONG_MIN);
+//ft_printf("%u\n ", LONG_MIN);
+//printf("%u\n", LONG_MAX);
+//ft_printf("%u\n", LONG_MAX);
+printf(" %u %u %u %u %u %u %u\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+ft_printf(" %u %u %u %u %u %u %u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+
+// HEXADECIMAL:
+int size;
+size=printf(" %x ", -145);
+printf(" Tamaño:%i\n ", size);
+size=ft_printf(" %x ", -145);
+printf(" Tamaño:%i\n ", size);
+printf(" %03x\n ", 1);
+ft_printf(" %03x ", 1);
+
+//printf("%012x\n ", 0);
+//ft_printf("%012x ", 0);
+printf("%01x\n ", 0);
+ft_printf("%01x ", 0);
+printf("%012x\n", LONG_MIN);
+ft_printf("%012x", LONG_MIN);
+//void *ptr;
+ft_printf("%20s", "Hola");
+
+printf(" NULL %s NULL \n ", NULL);
+ft_printf(" NULL %s NULL\n ", NULL);*/
+
+int size= printf("%-5d", -11);
+printf("Size print original:%i\n",size);
+size = ft_printf("%-5d", -11);
+printf("Size print :%i",size);
 //system("leaks a.out");
-}*/
+}
