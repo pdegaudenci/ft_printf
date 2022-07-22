@@ -38,6 +38,7 @@ typedef struct s_print
 }    t_print;
 
 t_print *ft_init_tab(t_print *tab) ;
+void	ft_destroy(t_print *tab);
 int ft_format(t_print *tab,char c);
 int     ft_printf(char const *str, ...);
 int	ft_isformat(char c);
