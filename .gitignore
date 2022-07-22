@@ -2,4 +2,5 @@ printfTester/
 ft_printf_tester/
 .DS_Store
 *.out
-*.out
+*.o
+main.c

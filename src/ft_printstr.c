@@ -12,13 +12,17 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	ft_printstr(char *str)
+int	ft_printstr_flags(char *str, t_print *tab)
 {
 	int	i;
 
 	i = -1;
 	while (str[++i])
+	{
+		if (tab->pnt > 0 && tab->prc == i)
+			break;
 		write(1, &str[i], 1);
+	}
 	return (i);
 }
 
@@ -35,15 +39,9 @@ int ft_printstr_format(char *str, t_print *tab)
 	if (tab->wdt > (int)ft_strlen(str))
 		str_w = ft_apply_width_str(str,tab);
 	else
-		return (ft_printstr(str));
-    cont = ft_printstr(str_w);
+		return (ft_printstr_flags(str,tab));
+    cont = ft_printstr_flags(str_w,tab);
 	free(str_w);
 	return (cont);
 }
 
-
-int	ft_percent(void)
-{
-	write(1, "%", 1);
-	return (1);
-}

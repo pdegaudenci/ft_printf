@@ -3,7 +3,7 @@
 
 void ft_fill(t_print *tab, char *fill, int cont)
 {
-    if (tab->sign)
+    if (tab->sign && tab->dash == 0)
         cont++;
     fill[cont--] = '\0';
     while ( cont >= 0)
@@ -11,6 +11,7 @@ void ft_fill(t_print *tab, char *fill, int cont)
         if ( cont == 0 && tab->sign < 0 && tab->dash == 0 )
         {
             fill[cont] = '-';
+             
              break;
         }
         else if (tab->zero == 1 && tab->dash == 0)
@@ -20,6 +21,7 @@ void ft_fill(t_print *tab, char *fill, int cont)
         }    
         else {
             fill[cont] = ' ';
+          
         }
         cont--;
         }
@@ -47,7 +49,6 @@ char	*ft_apply_width(char *str, t_print *tab)
     cont = tab->wdt - cont;
     fill = (char *)malloc (sizeof(char)*(cont + 1));
     ft_fill(tab, fill, cont);
-    printf("Tamaño:%i\n",(int)ft_strlen(fill));
     if (tab->sign < 0 && tab->dash == 0)
         str_w = ft_substr((char const*)str,1,ft_strlen(str));
     else
