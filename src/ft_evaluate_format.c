@@ -32,9 +32,12 @@ void ft_evaluate_prec(t_print *tab, const char *c, int *pos)
     *pos = *pos + 1;
     while (c[*pos] >= '0' && c[*pos] <= '9')
     {
-        tab->prc = c[*pos] - '0' + (tab->perc * 10);
+        tab->prc = c[*pos] - '0' + (tab->prc * 10);
         *pos = *pos + 1;
     }
+    if(tab->prc == 1)
+        tab->pnt = -1;
+    
 }
 void ft_evaluate_width(t_print *tab, const char *c, int *pos)
 {

@@ -35,10 +35,10 @@ void	ft_destroy(t_print *tab)
 
 int	ft_printf(char const *str, ...)
 {
+	
 	int		cont;
 	int		lenght_print;
 	t_print	*tab;
-
 	tab = (t_print *)malloc(sizeof(t_print));
 	if (!tab)
 		return (-1);
@@ -61,8 +61,7 @@ int	ft_printf(char const *str, ...)
 	ft_destroy(tab);
 	return (lenght_print);
 }
-/*
-int main(void)
+/*int main(void)
 {
         ---- BASICOS ---
   //ft_printf("%i\n%i\n%i\n%i\n%i\n%i\n%i\n", 10, 23, -2, 37, 200, -9999, 977779);  
@@ -177,10 +176,11 @@ int size= printf(" %-3x ", 1);
 printf("Size print1:%i\n",size);
 size = ft_printf(" %-3x ", 1);
 printf("Size print2:%i",size);
-int size= printf(" %.1s", "");
-printf("Size print1:%i\n",size);
-size = ft_printf(" %.1s", "");
-printf("Size print2:%i",size);
+//int size= printf( "%.8d ", INT_MAX);
+
+//printf("Size print1:%i\n",size);
+int size = ft_printf("" %.2d ", 100);
+//printf("Size print2:%i",size);
 //system("leaks a.out");
-}
-*/
+};*/
+

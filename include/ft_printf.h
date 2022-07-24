@@ -69,5 +69,6 @@ void ft_evaluate_prec(t_print *tab, const char *c, int *pos);
 char	*ft_apply_width_str(char *str, t_print *tab);
 int ft_apply_wdtptr(int size);
 int put_wdt(t_print *tab);
+void ft_apply_prec(t_print *tab);
 # endif
 

@@ -19,7 +19,7 @@ int	ft_printstr_flags(char *str, t_print *tab)
 	i = -1;
 	while (str[++i])
 	{
-		if (tab->pnt > 0 && tab->prc == i)
+		if ((tab->pnt > 0 || tab->pnt== -1)&& tab->prc == i)
 			break;
 		write(1, &str[i], 1);
 	}
@@ -33,8 +33,8 @@ int ft_printstr_format(char *str, t_print *tab)
 
 	if (str == NULL)
 	{
-		ft_putstr("(null)");
-		return (6);
+		return (ft_printstr_flags("(null)",tab));
+		
 	}
 	if (tab->wdt > (int)ft_strlen(str))
 		str_w = ft_apply_width_str(str,tab);
