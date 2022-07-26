@@ -4,3 +4,4 @@ ft_printf_tester/
 *.out
 *.o
 main.c
+.vscode
