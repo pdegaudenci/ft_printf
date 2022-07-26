@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:17:10 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/06/21 15:19:43 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:04:22 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	size_t	total;
 	void	*dst;
-  
+
 	total = size * count;
 	dst = malloc(total);
 	if (!dst)

@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:40:43 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/22 13:45:59 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:19:04 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ t_print	*ft_init_tab(t_print *tab)
 	tab->zero = 0;
 	tab->pnt = 0;
 	tab->sign = 0;
-	tab->tl = 0;
 	tab->is_zero = 0;
 	tab->dash = 0;
-	tab->perc = 0;
 	tab->space = 0;
 	return (tab);
 }
@@ -34,11 +32,11 @@ void	ft_destroy(t_print *tab)
 }
 
 int	ft_printf(char const *str, ...)
-{
-	
+{	
 	int		cont;
 	int		lenght_print;
 	t_print	*tab;
+
 	tab = (t_print *)malloc(sizeof(t_print));
 	if (!tab)
 		return (-1);
@@ -61,7 +59,8 @@ int	ft_printf(char const *str, ...)
 	ft_destroy(tab);
 	return (lenght_print);
 }
-/*int main(void)
+/*
+int main(void)
 {
         ---- BASICOS ---
   //ft_printf("%i\n%i\n%i\n%i\n%i\n%i\n%i\n", 10, 23, -2, 37, 200, -9999, 977779);  
@@ -176,11 +175,18 @@ int size= printf(" %-3x ", 1);
 printf("Size print1:%i\n",size);
 size = ft_printf(" %-3x ", 1);
 printf("Size print2:%i",size);
-//int size= printf( "%.8d ", INT_MAX);
+int size= printf( " %.2d ", -10);
 
-//printf("Size print1:%i\n",size);
-int size = ft_printf("" %.2d ", 100);
-//printf("Size print2:%i",size);
+printf("Size print1:%i\n",size);
+size = ft_printf(" %.2d ", -10);
+printf("Size print2:%i",size);
+
+
+int size= printf(" %.2x ", -1);
+
+printf("Size print1:%i\n",size);
+size = ft_printf(" %.2x ", -1);
+printf("Size print2:%i",size);
+
 //system("leaks a.out");
-};*/
-
+}*/

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/26 17:01:24 by pdegaude          #+#    #+#             */
+/*   Updated: 2022/07/26 17:02:52 by pdegaude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 
-int	ft_num_len(unsigned	int num)
+int	ft_num_len(unsigned int num)
 {
 	int	len;
 
 	len = 0;
-	if(num == 0)
+	if (num == 0)
 		return (1);
 	while (num != 0)
 	{
@@ -58,9 +70,4 @@ int	ft_printstr(char *str)
 	while (str[++i])
 		write(1, &str[i], 1);
 	return (i);
-}
-int	ft_percent(void)
-{
-	write(1, "%", 1);
-	return (1);
 }

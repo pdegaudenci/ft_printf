@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 19:09:06 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/05 12:13:14 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:04:55 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ char	**ft_split(char const *s, char c)
 		}
 		s += ft_strlen(array[i]);
 	}
-	array[i] = 0; 
+	array[i] = 0;
 	return (array);
 }

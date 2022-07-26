@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 21:40:27 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/04 11:48:30 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:06:43 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	str = 0;
 	while (s[cont])
 	{
-		if (s[cont] == (char )c) // Casteo a char 
+		if (s[cont] == (char )c)
 			str = (char *)(s + cont);
 		cont++;
 	}

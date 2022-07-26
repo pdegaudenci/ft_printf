@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/26 16:30:57 by pdegaude          #+#    #+#             */
+/*   Updated: 2022/07/26 16:33:28 by pdegaude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 
 void	ft_put_ptr(unsigned long num)
@@ -15,33 +27,35 @@ void	ft_put_ptr(unsigned long num)
 			ft_print_char((num - 10 + 'a'));
 	}
 }
-int ft_apply_wdtptr(int size)
+
+int	ft_apply_wdtptr(int size)
 {
-	int cont;
+	int	cont;
 
 	cont = 0;
 	while (size > 0)
 	{
-		write(1," ",1);
+		write(1, " ", 1);
 		size--;
 		cont++;
 	}
 	return (cont);
 }
+
 int	ft_print_ptr(unsigned long long ptr, t_print *tab)
 {
 	int	print_length;
-	
+
 	print_length = 0;
 	if (ptr == 0)
 	{
-		print_length+= write(1, "0x", 2);
+		print_length += write(1, "0x", 2);
 		print_length += write(1, "0", 1);
 	}		
 	else
 	{
 		if (tab->dash == 0 && tab->wdt > ft_ptr_len(ptr) + 2)
-			print_length += ft_apply_wdtptr(tab->wdt - (ft_ptr_len(ptr) + 2 ));
+			print_length += ft_apply_wdtptr(tab->wdt - (ft_ptr_len(ptr) + 2));
 		print_length += write(1, "0x", 2);
 		ft_put_ptr(ptr);
 		print_length += ft_ptr_len(ptr);
@@ -50,4 +64,3 @@ int	ft_print_ptr(unsigned long long ptr, t_print *tab)
 		print_length += ft_apply_wdtptr(tab->wdt - print_length);
 	return (print_length);
 }
-

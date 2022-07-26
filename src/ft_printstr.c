@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/26 16:34:03 by pdegaude          #+#    #+#             */
+/*   Updated: 2022/07/26 16:36:49 by pdegaude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 
 void	ft_putstr(char *str)
@@ -19,29 +31,27 @@ int	ft_printstr_flags(char *str, t_print *tab)
 	i = -1;
 	while (str[++i])
 	{
-		if ((tab->pnt > 0 || tab->pnt== -1)&& tab->prc == i)
-			break;
+		if ((tab->pnt > 0 || tab->pnt == -1) && tab->prc == i)
+			break ;
 		write(1, &str[i], 1);
 	}
 	return (i);
 }
 
-int ft_printstr_format(char *str, t_print *tab)
+int	ft_printstr_format(char *str, t_print *tab)
 {
-    int cont;
-    char *str_w;
+	int		cont;
+	char	*str_w;
 
 	if (str == NULL)
 	{
-		return (ft_printstr_flags("(null)",tab));
-		
+		return (ft_printstr_flags("(null)", tab));
 	}
 	if (tab->wdt > (int)ft_strlen(str))
-		str_w = ft_apply_width_str(str,tab);
+		str_w = ft_apply_width_str(str, tab);
 	else
-		return (ft_printstr_flags(str,tab));
-    cont = ft_printstr_flags(str_w,tab);
+		return (ft_printstr_flags(str, tab));
+	cont = ft_printstr_flags(str_w, tab);
 	free(str_w);
 	return (cont);
 }
-
