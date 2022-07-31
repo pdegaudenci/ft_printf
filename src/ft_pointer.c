@@ -49,6 +49,7 @@ int	ft_print_ptr(unsigned long long ptr, t_print *tab)
 	print_length = 0;
 	if (ptr == 0)
 	{
+		print_length += ft_apply_wdtptr(tab->wdt - 3);
 		print_length += write(1, "0x", 2);
 		print_length += write(1, "0", 1);
 	}		

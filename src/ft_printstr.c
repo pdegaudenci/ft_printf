@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:34:03 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/26 16:36:49 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/31 17:30:41 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,40 @@ int	ft_printstr_flags(char *str, t_print *tab)
 	return (i);
 }
 
+int	ft_null(char *str, t_print *tab)
+{
+	int		cont;
+	char	*temp;
+	char	*str_w;
+
+	cont = 0;
+	temp = NULL;
+	temp = (char *)malloc(ft_strlen(str));
+	while (temp != NULL && str[cont])
+	{
+		temp[cont] = str[cont];
+		cont++;
+	}
+	if (tab->wdt > 6)
+	{
+		str_w = ft_apply_width_str(temp, tab);
+		cont = ft_printstr_flags(str_w, tab);
+		free(temp);
+		free(str_w);
+		return (cont);
+	}
+	cont = write(1, str, 6);
+	free(temp);
+	return (cont);
+}
+
 int	ft_printstr_format(char *str, t_print *tab)
 {
 	int		cont;
 	char	*str_w;
 
 	if (str == NULL)
-	{
-		return (ft_printstr_flags("(null)", tab));
-	}
+		return (ft_null("(null)", tab));
 	if (tab->wdt > (int)ft_strlen(str))
 		str_w = ft_apply_width_str(str, tab);
 	else

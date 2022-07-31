@@ -77,4 +77,5 @@ int		ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len);
 void	ft_evaluate_flagsbonus(t_print *tab, const char *str, int *pos);
 char	*ft_apply_bonus(char *str, char format, t_print *tab);
 int		ft_applysharp(char format);
+int		ft_null(char *str, t_print *tab);
 #endif
