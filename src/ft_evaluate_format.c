@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:51:23 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/26 13:53:14 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:32:45 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,12 @@ int	ft_evaluate_flags(t_print *tab, const char *str, int *pos)
 {
 	while (ft_isformat(str[*pos]))
 	{
+		ft_evaluate_flagsbonus(tab, str, pos);
 		if (str[*pos] == '.')
 			ft_evaluate_prec(tab, str, pos);
 		if (str[*pos] == '-')
 		{
 			tab->dash = 1;
-			*pos = *pos + 1;
-		}
-		if (str[*pos] == '+')
-		{
-			tab->sign = 1;
-			*pos = *pos + 1;
-		}
-		if (str[*pos] == ' ')
-		{
-			tab->space = 1;
 			*pos = *pos + 1;
 		}
 		if (str[*pos] == '0' || (str[*pos] >= '0' && str[*pos] <= '9'))

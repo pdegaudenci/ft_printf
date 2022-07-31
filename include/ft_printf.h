@@ -33,6 +33,9 @@ typedef struct s_print
 	int		sign;
 	int		is_zero;
 	int		space;
+	int		sharp;
+	char	format;
+	char	max;
 }	t_print;
 
 t_print	*ft_init_tab(t_print *tab);
@@ -54,7 +57,7 @@ int		ft_printstr_flags(char *str, t_print *tab);
 int		ft_printstr_format(char *str, t_print *tab);
 void	ft_putstr(char *str);
 int		ft_hex_len(unsigned	int num);
-void	ft_put_hex(unsigned int num, const char format);
+void	ft_put_hex(unsigned int num, const char format, t_print *tab);
 int		ft_print_hex(unsigned int num, const char format, t_print *tab);
 int		ft_put_wdt(t_print *tab, int num);
 int		ft_print_ptr(unsigned long long ptr, t_print *tab);
@@ -71,4 +74,7 @@ void	ft_apply_prec(t_print *tab);
 char	*ft_itoa_hex(unsigned int n, char format);
 char	*ft_applyflags_nbr(char *str_w, char *fill, t_print *tab, char *str);
 int		ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len);
+void	ft_evaluate_flagsbonus(t_print *tab, const char *str, int *pos);
+char	*ft_apply_bonus(char *str, char format, t_print *tab);
+int		ft_applysharp(char format);
 #endif

@@ -22,6 +22,8 @@ t_print	*ft_init_tab(t_print *tab)
 	tab->is_zero = 0;
 	tab->dash = 0;
 	tab->space = 0;
+	tab->sharp = 0;
+	tab->max = 0;
 	return (tab);
 }
 
@@ -182,11 +184,26 @@ size = ft_printf(" %.2d ", -10);
 printf("Size print2:%i",size);
 
 
-int size= printf(" %.2x ", -1);
+int size= printf("%#x ", -99);
 
 printf("Size print1:%i\n",size);
 size = ft_printf(" %.2x ", -1);
 printf("Size print2:%i",size);
+//int size= printf(" %-3d ", -101);
 
+printf(" %-9d ", INT_MAX);
+int size = ft_printf(" %-9d ", INT_MAX);
+printf("Size print2:%i",size);
+int size= printf("% d", INT_MAX);
+
+printf("Size print1:%i\n", size);
+size = ft_printf("% d", INT_MAX);
+printf("Size print2:%i",size);
+
+int size= printf("%+d", INT_MAX);
+
+printf("Size print1:%i\n", size);
+size = ft_printf("%+d", INT_MAX);
+printf("Size print2:%i",size);
 //system("leaks a.out");
 }*/

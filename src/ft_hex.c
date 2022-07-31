@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:53:35 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/26 16:17:43 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:53:15 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	ft_hex_len(unsigned int num)
 	return (len);
 }
 
-void	ft_put_hex(unsigned int num, const char format)
+void	ft_put_hex(unsigned int num, const char format, t_print *tab)
 {
 	if (num >= 16)
 	{
-		ft_put_hex(num / 16, format);
-		ft_put_hex(num % 16, format);
+		ft_put_hex(num / 16, format, tab);
+		ft_put_hex(num % 16, format, tab);
 	}
 	else
 	{
@@ -39,9 +39,15 @@ void	ft_put_hex(unsigned int num, const char format)
 		else if (num >= 0)
 		{
 			if (format == 'x')
+			{
+				tab->format = 'x';
 				ft_print_char(num - 10 + 'a');
+			}	
 			if (format == 'X')
+			{
+				tab->format = 'X';
 				ft_print_char(num - 10 + 'A');
+			}		
 		}
 	}
 }
@@ -54,14 +60,15 @@ static int	ft_eval_wdt(t_print *tab, unsigned int num, char format)
 	if (tab->dash == 1)
 	{
 		tab->zero = 0;
-		ft_put_hex(num, format);
-		cont += ft_put_wdt(tab, num);
+		if (tab->sharp == 1)
+			cont += ft_applysharp(format);
+		ft_put_hex(num, format, tab);
+		return (ft_put_wdt(tab, num));
 	}
-	else
-	{
-		cont += ft_put_wdt(tab, num);
-		ft_put_hex(num, format);
-	}
+	if (tab->sharp == 1)
+		cont += ft_applysharp(format);
+	cont += ft_put_wdt(tab, num);
+	ft_put_hex(num, format, tab);
 	return (cont);
 }
 
@@ -84,6 +91,7 @@ int	ft_print_hex(unsigned int num, const char format, t_print *tab)
 	{
 		num_str = ft_itoa_hex(num, format);
 		num_wdt = ft_apply_width(num_str, tab);
+		num_wdt = ft_apply_bonus(num_wdt, format, tab);
 		cont += ft_printstr(num_wdt);
 		free(num_wdt);
 		return (cont);

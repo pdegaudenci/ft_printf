@@ -17,6 +17,7 @@ SRCS =  ft_printf.c \
 		src/ft_utils.c \
 		src/ft_flags_hex.c \
 		src/ft_utils_hex.c \
+		src/ft_flags_bonus.c \
 		libft/ft_strjoin.c \
 		libft/ft_memmove.c \
 		libft/ft_itoa.c \
@@ -48,7 +49,8 @@ SURPL_O = 	ft_evaluate_format.o \
 			ft_utils.o \
 			ft_flags_hex.o \
 			ft_toupper.o \
-			ft_utils_hex.o
+			ft_utils_hex.o \
+			ft_flags_bonus.o
 CC = gcc
 
 FLAGS = -c -Wall -Wextra -Werror
