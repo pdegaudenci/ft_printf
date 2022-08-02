@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:18:23 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/31 15:41:10 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:14:47 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@ int	ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len)
 	return (len);
 }
 
-static int	ft_limits(t_print *tab)
+static int	ft_evallimits(int n, t_print *tab, char *num_w, int len)
 {
-	if (tab->space == 1)
-		return (write(1, " ", 1));
-	if (tab->sign == 1)
-		return (write(1, "+", 1));
-	return (0);
+	tab->limit = 1;
+	if (n == 2147483647)
+		return (ft_evallwdtprc_nbr((char *)ft_strdup("2147483647"),
+				num_w, tab, len));
+	tab->sign = 0;
+	tab->space = 0;
+	return (ft_evallwdtprc_nbr((char *)ft_strdup("-2147483648"),
+			num_w, tab, len));
 }
 
 int	ft_putnbr(int n, t_print *tab)
@@ -49,10 +52,8 @@ int	ft_putnbr(int n, t_print *tab)
 		tab->sign = -1;
 	len = 0;
 	num_w = NULL;
-	if (n == 2147483647)
-		return (ft_limits(tab) + write(1, "2147483647", 10));
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
+	if (n == 2147483647 || n == -2147483648)
+		return (ft_evallimits(n, tab, num_w, len));
 	num = ft_itoa(n);
 	if (num != NULL)
 	{

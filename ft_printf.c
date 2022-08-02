@@ -24,6 +24,7 @@ t_print	*ft_init_tab(t_print *tab)
 	tab->space = 0;
 	tab->sharp = 0;
 	tab->max = 0;
+	tab->limit = 1;
 	return (tab);
 }
 
@@ -205,5 +206,12 @@ int size= printf("%+d", INT_MAX);
 printf("Size print1:%i\n", size);
 size = ft_printf("%+d", INT_MAX);
 printf("Size print2:%i",size);
-//system("leaks a.out");
+
+int size =printf("%1s", NULL);
+printf("Size print2:%i\n",size);
+size = ft_printf("%1s", NULL);
+printf("Size print2:%i",size);
+
+
+system("leaks a.out");
 }*/

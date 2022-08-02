@@ -36,6 +36,7 @@ typedef struct s_print
 	int		sharp;
 	char	format;
 	char	max;
+	int		limit;
 }	t_print;
 
 t_print	*ft_init_tab(t_print *tab);
