@@ -71,7 +71,7 @@ void	ft_evaluate_prec(t_print *tab, const char *c, int *pos);
 char	*ft_apply_width_str(char *str, t_print *tab);
 int		ft_apply_wdtptr(int size);
 int		put_wdt(t_print *tab);
-void	ft_apply_prec(t_print *tab);
+void	ft_apply_prec(t_print *tab, char *str);
 char	*ft_itoa_hex(unsigned int n, char format);
 char	*ft_applyflags_nbr(char *str_w, char *fill, t_print *tab, char *str);
 int		ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len);

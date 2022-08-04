@@ -221,11 +221,21 @@ printf("  Size print2:%i",size);
 
 int size;
 
-size =printf("%.11d", (int)-2147483648);
+size =printf(" %.2d ", -10);
 printf("  Size print2:%i\n",size);
-size = ft_printf("%.11d", (int)-2147483648);
+size = ft_printf(" %.2d ", -10);
 printf("  Size print2:%i\n",size);
 
 
+int size;
+size =printf("%.3d", -1234);
+printf("  Size print2:%i\n",size);
+size = ft_printf("%.3d", -1234);
+printf("  Size print2:%i\n",size);
+;
+int size =printf("%.0d", 0);
+printf("  Size print2:%i\n",size);
+size = ft_printf("%.0d", 0);
+printf("  Size print2:%i\n",size);
 //system("leaks a.out");
 }*/
