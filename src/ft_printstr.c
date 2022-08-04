@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:34:03 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/02 20:13:57 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:57:47 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ void	ft_putstr(char *str)
 int	ft_printstr_flags(char *str, t_print *tab)
 {
 	int	i;
+	int	wdt;
 
+	wdt = 0 ;
+	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > 0 && tab->prc < 2)
+	{
+		while (wdt < tab->wdt - tab->prc)
+			wdt += write(1, " ", 1);
+	}
 	i = -1;
 	while (str[++i])
 	{
@@ -35,7 +42,7 @@ int	ft_printstr_flags(char *str, t_print *tab)
 			break ;
 		write(1, &str[i], 1);
 	}
-	return (i);
+	return (i + wdt);
 }
 
 int	ft_null(char *str, t_print *tab)
@@ -52,7 +59,8 @@ int	ft_null(char *str, t_print *tab)
 		temp[cont] = str[cont];
 		cont++;
 	}
-	if (tab->wdt > 6 || tab->pnt == -1)
+	if (tab->wdt > (int)ft_strlen(str) || tab->pnt == -1
+		|| (tab->pnt == 1 && tab->prc < (int)ft_strlen(str)))
 	{
 		str_w = ft_apply_width_str(temp, tab);
 		cont = ft_printstr_flags(str_w, tab);
@@ -78,5 +86,7 @@ int	ft_printstr_format(char *str, t_print *tab)
 		return (ft_printstr_flags(str, tab));
 	cont = ft_printstr_flags(str_w, tab);
 	free(str_w);
+	if (tab->prc == 1 && tab->wdt == 1)
+		return (1);
 	return (cont);
 }

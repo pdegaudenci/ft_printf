@@ -9,7 +9,6 @@
 /*   Updated: 2022/08/02 20:14:47 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/ft_printf.h"
 
 int	ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len)

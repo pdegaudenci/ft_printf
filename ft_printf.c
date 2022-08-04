@@ -207,11 +207,25 @@ printf("Size print1:%i\n", size);
 size = ft_printf("%+d", INT_MAX);
 printf("Size print2:%i",size);
 
-int size =printf("%1s", NULL);
-printf("Size print2:%i\n",size);
-size = ft_printf("%1s", NULL);
-printf("Size print2:%i",size);
+int size;
+
+size =printf("%10.1s", "21-school.ru");
+printf("  Size print2:%i\n",size);
+size = ft_printf("%10.1s", "21-school.ru");
+printf("  Size print2:%i\n",size);
+
+size =printf("%1.s", "21-school.ru");
+printf("  Size print2:%i\n",size);
+size = ft_printf("%1.s", "21-school.ru");
+printf("  Size print2:%i",size);
+
+int size;
+
+size =printf("%.11d", (int)-2147483648);
+printf("  Size print2:%i\n",size);
+size = ft_printf("%.11d", (int)-2147483648);
+printf("  Size print2:%i\n",size);
 
 
-system("leaks a.out");
+//system("leaks a.out");
 }*/
