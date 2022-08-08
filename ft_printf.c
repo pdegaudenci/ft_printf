@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:40:43 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/26 18:19:04 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/08 17:30:49 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,9 +233,31 @@ printf("  Size print2:%i\n",size);
 size = ft_printf("%.3d", -1234);
 printf("  Size print2:%i\n",size);
 ;
-int size =printf("%.0d", 0);
-printf("  Size print2:%i\n",size);
-size = ft_printf("%.0d", 0);
-printf("  Size print2:%i\n",size);
+
+
+int size =printf("%1.s", "21-school.ru");
+printf(" Size print2:%i\n",size);
+size = ft_printf("%1.s", "21-school.ru");
+printf(" Size print2:%i\n",size);
+
+int size =printf("%10.1s", "21-school.ru");
+printf(" Size print2:%i\n",size);
+size = ft_printf("%10.1s", "21-school.ru");
+printf(" Size print2:%i\n",size);
+
+int size =printf("%9.3s","goooood");
+printf("Size print2:%i\n",size);
+size = ft_printf("%9.3s","goooood");
+printf("Size print2:%i\n",size);
+
+int size =printf("%------------------9.3s","goooood");
+printf("Size print2:%i\n",size);
+size = ft_printf("%------------------9.3s","goooood");
+printf("Size print2:%i\n",size);
+
+int size =printf("%-.3d", -10);
+printf("Size print2:%i\n",size);
+size = ft_printf("%-.3d", -10);
+printf("Size print2:%i\n",size);
 //system("leaks a.out");
 }*/

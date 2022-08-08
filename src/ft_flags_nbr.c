@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:57:02 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/04 16:43:35 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/08 17:27:15 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_fill(t_print *tab, char *fill, int cont)
 }
 
 char	*ft_apply_align(char *fill, char *str, t_print *tab)
-{
+{	
 	if (tab->dash > 0)
 	{
 		tab->zero = 0;

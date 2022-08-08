@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:38:20 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/26 18:18:19 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/08 17:29:26 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ void	ft_evaluate_flagsbonus(t_print *tab, const char *str, int *pos);
 char	*ft_apply_bonus(char *str, char format, t_print *tab);
 int		ft_applysharp(char format);
 int		ft_null(char *str, t_print *tab);
+char	*ft_applyalign_str(char *str, char *fill, t_print *tab);
 #endif

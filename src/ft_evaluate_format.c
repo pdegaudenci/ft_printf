@@ -23,6 +23,8 @@ int	ft_evaluate_flags(t_print *tab, const char *str, int *pos)
 		{
 			tab->dash = 1;
 			*pos = *pos + 1;
+			while (str[*pos] == '-')
+				*pos = *pos + 1;
 		}
 		if (str[*pos] == '0' || (str[*pos] >= '0' && str[*pos] <= '9'))
 			ft_evaluate_width(tab, str, pos);
