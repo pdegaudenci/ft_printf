@@ -86,12 +86,9 @@ char	*ft_applyflags_nbr(char *str_w, char *fill, t_print *tab, char *str)
 	cont = (int)ft_strlen(str);
 	ft_apply_prec(tab, str);
 	cont = tab->wdt - cont;
-	if (str[0] == '-')
-		tab->sign = -1;
-	if ((tab->sign < 0 && tab->minus == 0))
-		str_w = ft_substr((char const *)str, 1, ft_strlen(str));
-	else
-		str_w = ft_substr((char const *)str, 0, ft_strlen(str));
+	str_w = ft_strnbr(tab, str);
+	if (cont < 0 && tab->sign < 0 && tab->limit != 1)
+		cont = 0;
 	if (cont > 0 || (cont == 0 && tab->sign < 0))
 		fill = (char *)malloc(sizeof(char) * (cont + 1));
 	ft_fill(tab, fill, cont);

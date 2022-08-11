@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:38:20 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/10 21:55:16 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:48:50 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ char	*ft_wdtprc_pnt(t_print *tab, char *fill, int wdt, char *str_w);
 char	*ft_apply_align(char *fill, char *str, t_print *tab);
 char	*ft_flags_bonus(char *str, t_print *tab, int minu, int wdt);
 int		ft_eval_zero(int n, t_print *tab);
+char	*ft_strnbr(t_print *tab, char *str);
 #endif

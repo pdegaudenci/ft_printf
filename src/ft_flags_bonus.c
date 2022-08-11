@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:33:15 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/31 16:00:43 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:48:22 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,18 @@ char	*ft_apply_bonus(char *str, char format, t_print *tab)
 		return (temp);
 	}
 	return (str);
+}
+
+char	*ft_strnbr(t_print *tab, char *str)
+{
+	char	*str_w;
+
+	str_w = NULL;
+	if (str[0] == '-')
+		tab->sign = -1;
+	if ((tab->sign < 0 && tab->minus == 0))
+		str_w = ft_substr((char const *)str, 1, ft_strlen(str));
+	else
+		str_w = ft_substr((char const *)str, 0, ft_strlen(str));
+	return (str_w);
 }

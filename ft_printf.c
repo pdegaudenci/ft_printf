@@ -60,3 +60,9 @@ int	ft_printf(char const *str, ...)
 	ft_destroy(tab);
 	return (lenght_print);
 }
+/*
+int main(void)
+{
+	printf("%14.2d\n",-4200);
+	ft_printf("%14.2d",-4200);
+}*/
