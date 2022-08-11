@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 17:01:24 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/02 20:15:40 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:40:08 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,27 @@ int	ft_printstr(char *str)
 	while (str[++i])
 		write(1, &str[i], 1);
 	return (i);
+}
+
+int	ft_eval_zero(int n, t_print *tab)
+{
+	char	*num_w;
+	int		len;
+
+	len = -1;
+	num_w = NULL;
+	if (n == 0 && (tab->pnt == 1 || tab->pnt == -1)
+		&& tab->prc == 0 && tab->wdt == 0)
+		return (0);
+	if (n == 0 && (tab->pnt == 1 || tab->pnt == -1)
+		&& tab->wdt > 0 && tab->prc == 0)
+	{
+		len = 0;
+		num_w = (char *)malloc((size_t)tab->wdt + 1);
+		ft_fill_str(num_w, tab->wdt);
+		len += ft_printstr(num_w);
+		free(num_w);
+		return (len);
+	}
+	return (len);
 }

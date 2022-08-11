@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:53:35 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/31 15:53:15 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/10 20:36:01 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,49 +52,31 @@ void	ft_put_hex(unsigned int num, const char format, t_print *tab)
 	}
 }
 
-static int	ft_eval_wdt(t_print *tab, unsigned int num, char format)
-{
-	int	cont;
-
-	cont = 0;
-	if (tab->dash == 1)
-	{
-		tab->zero = 0;
-		if (tab->sharp == 1)
-			cont += ft_applysharp(format);
-		ft_put_hex(num, format, tab);
-		return (ft_put_wdt(tab, num));
-	}
-	if (tab->sharp == 1)
-		cont += ft_applysharp(format);
-	cont += ft_put_wdt(tab, num);
-	ft_put_hex(num, format, tab);
-	return (cont);
-}
-
 int	ft_print_hex(unsigned int num, const char format, t_print *tab)
 {
 	int		cont;
-	char	*num_str;
 	char	*num_wdt;
 
 	cont = 0;
 	if (tab->prc == 1)
 		tab->pnt = 0;
-	if ((num == 0 && (tab->wdt - 1) <= 0) && tab->pnt == 0)
-		cont += write(1, "0", 1);
-	else if (tab->pnt == 0 || tab->wdt > ft_num_len(num))
+	if (num == 0 && (tab->pnt == 1 || tab->pnt == -1)
+		&& tab->prc == 0 && tab->wdt == 0)
+		return (0);
+	if (num == 0 && (tab->pnt == 1 || tab->pnt == -1)
+		&& tab->wdt > 0 && tab->prc == 0)
 	{
-		return (cont + ft_eval_wdt(tab, num, format) + ft_hex_len(num));
-	}
-	else if (tab->pnt == 1)
-	{
-		num_str = ft_itoa_hex(num, format);
-		num_wdt = ft_apply_width(num_str, tab);
-		num_wdt = ft_apply_bonus(num_wdt, format, tab);
+		num_wdt = (char *)malloc((size_t)tab->wdt + 1);
+		ft_fill_str(num_wdt, tab->wdt);
 		cont += ft_printstr(num_wdt);
 		free(num_wdt);
 		return (cont);
 	}
+	if ((num == 0 && (tab->wdt - 1) <= 0) && tab->pnt == 0)
+		cont += write(1, "0", 1);
+	else if (tab->pnt == 1 || tab->pnt == -1)
+		return (ft_prec_hex(num, format, tab, cont));
+	else if (tab->pnt == 0 || tab->wdt > ft_num_len(num))
+		return (cont + ft_eval_wdt(tab, num, format) + ft_hex_len(num));
 	return (cont);
-}
+}	

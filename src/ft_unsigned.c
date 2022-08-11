@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:37:39 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/04 16:44:40 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/10 21:54:42 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int	ft_print_unsigned(unsigned int n, t_print *tab)
 	cont = 0;
 	num = NULL;
 	num_w = NULL;
-	if (n == 0 && tab->pnt == 1 && tab->prc == 0)
-		return (0);
+	cont = ft_eval_zero(n, tab);
+	if (cont != -1)
+		return (cont);
+	cont = 0;
 	if (n == 0 && (tab->wdt == 0 || tab->wdt == 1) && tab->pnt == 0)
 	{
 		cont += write(1, "0", 1);

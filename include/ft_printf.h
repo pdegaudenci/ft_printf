@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:38:20 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/08 17:29:26 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/10 21:55:16 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ typedef struct s_print
 	va_list	args;
 	int		wdt;
 	int		prc;
-	int		zero;
 	int		pnt;
-	int		dash;
+	int		minus;
+	int		zero;
 	int		sign;
-	int		is_zero;
 	int		space;
 	int		sharp;
 	char	format;
-	char	max;
 	int		limit;
 }	t_print;
 
@@ -80,4 +78,12 @@ char	*ft_apply_bonus(char *str, char format, t_print *tab);
 int		ft_applysharp(char format);
 int		ft_null(char *str, t_print *tab);
 char	*ft_applyalign_str(char *str, char *fill, t_print *tab);
+void	ft_fill_str(char *fill, int size);
+int		ft_eval_wdt(t_print *tab, unsigned int num, char format);
+int		ft_prec_hex(unsigned int num, char format, t_print *tab, int cont);
+void	ft_fill_str_nbr(char *fill, int size, t_print *tab);
+char	*ft_wdtprc_pnt(t_print *tab, char *fill, int wdt, char *str_w);
+char	*ft_apply_align(char *fill, char *str, t_print *tab);
+char	*ft_flags_bonus(char *str, t_print *tab, int minu, int wdt);
+int		ft_eval_zero(int n, t_print *tab);
 #endif

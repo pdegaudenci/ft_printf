@@ -55,13 +55,13 @@ int	ft_print_ptr(unsigned long long ptr, t_print *tab)
 	}		
 	else
 	{
-		if (tab->dash == 0 && tab->wdt > ft_ptr_len(ptr) + 2)
+		if (tab->minus == 0 && tab->wdt > ft_ptr_len(ptr) + 2)
 			print_length += ft_apply_wdtptr(tab->wdt - (ft_ptr_len(ptr) + 2));
 		print_length += write(1, "0x", 2);
 		ft_put_ptr(ptr);
 		print_length += ft_ptr_len(ptr);
 	}
-	if (print_length < tab->wdt && tab->dash == 1)
+	if (print_length < tab->wdt && tab->minus == 1)
 		print_length += ft_apply_wdtptr(tab->wdt - print_length);
 	return (print_length);
 }

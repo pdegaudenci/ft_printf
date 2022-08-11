@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:18:23 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/04 16:44:15 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:39:18 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/ft_printf.h"
@@ -21,7 +21,7 @@ int	ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len)
 		free(num_w);
 	}
 	else
-	{
+	{	
 		num = ft_apply_bonus(num, 'd', tab);
 		len = ft_printstr(num);
 		free(num);
@@ -41,6 +41,48 @@ static int	ft_evallimits(int n, t_print *tab, char *num_w, int len)
 			num_w, tab, len - 1));
 }
 
+char	*ft_wdtprc_pnt(t_print *tab, char *fill, int wdt, char *str_w)
+{
+	char	*str_ret;
+	int		cont;
+
+	cont = wdt - (int)ft_strlen(fill);
+	str_w = (char *)malloc((size_t)cont + 1);
+	ft_fill_str_nbr(str_w, cont, tab);
+	str_ret = ft_apply_align(str_w, fill, tab);
+	free(str_w);
+	free(fill);
+	return (str_ret);
+}
+
+char	*ft_flags_bonus(char *str, t_print *tab, int dash, int wdt)
+{
+	char	*str_w;
+	char	*fill;
+
+	fill = NULL;
+	str_w = NULL;
+	if (tab->prc == 0 && (int)ft_strlen(str) == 1
+		&& tab->pnt == 1 && tab->prc != 0)
+	{
+		tab->zero = 0;
+		tab->sign = 0;
+		free(str);
+		fill = (char *)malloc(sizeof(char) * (tab->wdt + 1));
+		ft_fill(tab, fill, tab->wdt);
+		return (fill);
+	}
+	if (wdt < (int) ft_strlen(str) && tab->pnt == 1
+		&& tab->prc < (int) ft_strlen(str))
+		fill = str;
+	else
+		fill = ft_applyflags_nbr(str_w, fill, tab, str);
+	tab->minus = dash;
+	if (tab->pnt == 1 && wdt - (int)ft_strlen(fill) > 0)
+		return (ft_wdtprc_pnt(tab, fill, wdt, str_w));
+	return (fill);
+}
+
 int	ft_putnbr(int n, t_print *tab)
 {
 	int		len;
@@ -51,14 +93,14 @@ int	ft_putnbr(int n, t_print *tab)
 		tab->sign = -1;
 	len = 0;
 	num_w = NULL;
-	if (n == 0 && tab->pnt == 1 && tab->prc == 0)
-		return (0);
+	len = ft_eval_zero(n, tab);
+	if (len != -1)
+		return (len);
+	len = 0;
 	if (n == 2147483647 || n == -2147483648)
 		return (ft_evallimits(n, tab, num_w, len));
 	num = ft_itoa(n);
 	if (num != NULL)
-	{
 		len += ft_evallwdtprc_nbr(num, num_w, tab, len);
-	}
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:34:03 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/08 17:28:47 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/10 21:49:54 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_printstr_flags(char *str, t_print *tab)
 	int	wdt;
 
 	wdt = 0 ;
-	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > 0 && tab->dash == 0)
+	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > 0 && tab->minus == 0)
 	{
 		while (wdt < tab->wdt - tab->prc)
 			wdt += write(1, " ", 1);
@@ -42,7 +42,7 @@ int	ft_printstr_flags(char *str, t_print *tab)
 			break ;
 		write(1, &str[i], 1);
 	}
-	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > 0 && tab->dash == 1)
+	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > 0 && tab->minus == 1)
 	{
 		while (wdt < tab->wdt - tab->prc)
 			wdt += write(1, " ", 1);

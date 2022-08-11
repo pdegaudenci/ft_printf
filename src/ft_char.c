@@ -39,7 +39,7 @@ int	ft_printchar_format(int c, t_print *tab)
 	cont = 0;
 	if (tab->wdt > 0)
 	{
-		if (tab->dash > 0)
+		if (tab->minus > 0)
 			return (ft_print_char(c) + put_wdt(tab));
 		return (put_wdt(tab) + ft_print_char(c));
 	}
