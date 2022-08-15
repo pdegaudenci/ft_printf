@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:39:18 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/07/26 17:23:07 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/14 18:50:48 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static char	*ft_putbase16(void)
 	return (base);
 }
 
-char	*ft_itoa_hex(unsigned int n, char format)
+char	*ft_itoa_hex(unsigned int n, char format, t_print *tab)
 {
 	int		len;
 	char	*str;
@@ -116,5 +116,12 @@ char	*ft_itoa_hex(unsigned int n, char format)
 	if (!str)
 		return (0);
 	free(digitos);
+	if (tab->sharp == 1 & n != 0 && tab->wdt > (int)ft_strlen(str)
+		&& tab->zero == 0 && tab->prc < (int)ft_strlen(str))
+	{
+		digitos = ft_strjoin("0x", str);
+		free(str);
+		return (digitos);
+	}
 	return (str);
 }

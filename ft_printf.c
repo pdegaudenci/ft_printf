@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:40:43 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/11 13:47:31 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/15 03:41:30 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,3 @@ int	ft_printf(char const *str, ...)
 	ft_destroy(tab);
 	return (lenght_print);
 }
-/*
-int main(void)
-{
-	printf("%14.2d\n",-4200);
-	ft_printf("%14.2d",-4200);
-}*/

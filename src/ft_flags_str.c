@@ -52,7 +52,10 @@ char	*ft_apply_width_str(char *str, t_print *tab)
 
 	cont = (int)ft_strlen(str);
 	str_w = NULL;
-	cont = tab->wdt - cont;
+	if (tab->wdt < cont)
+		cont = tab->wdt;
+	else
+		cont = tab->wdt - cont;
 	fill = (char *)malloc (sizeof(char) * (cont + 1));
 	ft_fill_str(fill, cont);
 	if (tab->pnt > 0)

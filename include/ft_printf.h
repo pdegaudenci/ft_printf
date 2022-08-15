@@ -9,7 +9,6 @@
 /*   Updated: 2022/08/11 19:48:50 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -70,13 +69,13 @@ char	*ft_apply_width_str(char *str, t_print *tab);
 int		ft_apply_wdtptr(int size);
 int		put_wdt(t_print *tab);
 void	ft_apply_prec(t_print *tab, char *str);
-char	*ft_itoa_hex(unsigned int n, char format);
+char	*ft_itoa_hex(unsigned int n, char format, t_print *tab);
 char	*ft_applyflags_nbr(char *str_w, char *fill, t_print *tab, char *str);
 int		ft_evallwdtprc_nbr(char *num, char *num_w, t_print *tab, int len);
 void	ft_evaluate_flagsbonus(t_print *tab, const char *str, int *pos);
 char	*ft_apply_bonus(char *str, char format, t_print *tab);
 int		ft_applysharp(char format);
-int		ft_null(char *str, t_print *tab);
+int		ft_null(char *str, t_print *tab, int size);
 char	*ft_applyalign_str(char *str, char *fill, t_print *tab);
 void	ft_fill_str(char *fill, int size);
 int		ft_eval_wdt(t_print *tab, unsigned int num, char format);
@@ -87,4 +86,5 @@ char	*ft_apply_align(char *fill, char *str, t_print *tab);
 char	*ft_flags_bonus(char *str, t_print *tab, int minu, int wdt);
 int		ft_eval_zero(int n, t_print *tab);
 char	*ft_strnbr(t_print *tab, char *str);
+int		ft_printstr_flagsnull(char *str, t_print *tab, int wdt);
 #endif

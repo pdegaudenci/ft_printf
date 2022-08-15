@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:17 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/10 20:36:48 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/14 18:44:27 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,17 @@ int	ft_prec_hex(unsigned int num, char format, t_print *tab, int cont)
 	char	*num_str;
 	char	*num_wdt;
 
-	num_str = ft_itoa_hex(num, format);
-	num_wdt = ft_apply_width(num_str, tab);
+	num_str = ft_itoa_hex(num, format, tab);
+	if (num != 0 && num_str != NULL && tab->sharp == 1
+		&& (tab->prc > (int)ft_strlen(num_str)
+			|| (tab->wdt > (int)ft_strlen(num_str) && tab->zero != 0)))
+	{
+		tab->wdt -= 2;
+		ft_applysharp(format);
+		num_wdt = ft_apply_width(num_str, tab);
+	}
+	else
+		num_wdt = ft_apply_width(num_str, tab);
 	num_wdt = ft_apply_bonus(num_wdt, format, tab);
 	cont += ft_printstr(num_wdt);
 	free(num_wdt);

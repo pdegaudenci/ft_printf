@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:18:23 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/11 13:39:18 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/15 05:09:52 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/ft_printf.h"
@@ -62,22 +62,17 @@ char	*ft_flags_bonus(char *str, t_print *tab, int dash, int wdt)
 
 	fill = NULL;
 	str_w = NULL;
-	if (tab->prc == 0 && (int)ft_strlen(str) == 1
-		&& tab->pnt == 1 && tab->prc != 0)
-	{
-		tab->zero = 0;
-		tab->sign = 0;
-		free(str);
-		fill = (char *)malloc(sizeof(char) * (tab->wdt + 1));
-		ft_fill(tab, fill, tab->wdt);
-		return (fill);
-	}
 	if (wdt < (int) ft_strlen(str) && tab->pnt == 1
 		&& tab->prc < (int) ft_strlen(str))
 		fill = str;
 	else
 		fill = ft_applyflags_nbr(str_w, fill, tab, str);
 	tab->minus = dash;
+	if (tab->sign == 1 && fill[0] != '+')
+	{
+		fill[0] = '+';
+		tab->sign = 0;
+	}
 	if (tab->pnt == 1 && wdt - (int)ft_strlen(fill) > 0)
 		return (ft_wdtprc_pnt(tab, fill, wdt, str_w));
 	return (fill);
@@ -100,6 +95,11 @@ int	ft_putnbr(int n, t_print *tab)
 	if (n == 2147483647 || n == -2147483648)
 		return (ft_evallimits(n, tab, num_w, len));
 	num = ft_itoa(n);
+	if (tab->sign == 1 && tab->zero == 0 && tab->prc <= (int)ft_strlen(num))
+	{
+		num = ft_apply_bonus(num, 'd', tab);
+		tab->sign = 0;
+	}	
 	if (num != NULL)
 		len += ft_evallwdtprc_nbr(num, num_w, tab, len);
 	return (len);

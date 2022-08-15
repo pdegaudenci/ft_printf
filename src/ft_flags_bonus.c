@@ -59,6 +59,7 @@ char	*ft_apply_bonus(char *str, char format, t_print *tab)
 	if (tab->sign == 1)
 	{
 		temp = ft_strjoin("+", str);
+		tab->sign = 0;
 		free(str);
 		return (temp);
 	}

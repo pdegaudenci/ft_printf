@@ -80,6 +80,6 @@ fclean : clean
 bonus: $(NAME)
 
 test:
-	$(CC) $(SRCS)
+	$(CC) $(SRCS) prueba.c
 	
 re : fclean all

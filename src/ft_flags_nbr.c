@@ -57,7 +57,7 @@ void	ft_apply_prec(t_print *tab, char *str)
 {
 	if (tab->pnt == 1)
 	{
-		if (tab->prc >= (int)ft_strlen(str) - 1 || tab->wdt - tab->prc > 0)
+		if (tab->prc >= (int)ft_strlen(str) || tab->wdt - tab->prc > 0)
 		{
 			if ((tab->minus == 1 && tab->wdt < (int)ft_strlen(str))
 				|| tab->pnt == 1)
@@ -71,7 +71,7 @@ void	ft_apply_prec(t_print *tab, char *str)
 		}
 		else
 		{
-			tab->wdt = ft_strlen(str) - 1;
+			tab->wdt = ft_strlen(str);
 			if (tab->sign < 0)
 				tab->wdt++;
 		}

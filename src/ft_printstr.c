@@ -6,7 +6,7 @@
 /*   By: pdegaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:34:03 by pdegaude          #+#    #+#             */
-/*   Updated: 2022/08/10 21:49:54 by pdegaude         ###   ########.fr       */
+/*   Updated: 2022/08/15 03:40:54 by pdegaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_printstr_flags(char *str, t_print *tab)
 	int	i;
 	int	wdt;
 
+	if (tab->wdt > (int)ft_strlen(str))
+		return (ft_printstr_flagsnull(str, tab, tab->prc));
 	wdt = 0 ;
 	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > 0 && tab->minus == 0)
 	{
@@ -50,7 +52,35 @@ int	ft_printstr_flags(char *str, t_print *tab)
 	return (i + wdt);
 }
 
-int	ft_null(char *str, t_print *tab)
+int	ft_printstr_flagsnull(char *str, t_print *tab, int wdt)
+{
+	int	i;
+
+	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > (int)ft_strlen(str)
+		&& tab->minus == 0)
+	{
+		while (wdt < tab->wdt)
+			wdt += write(1, " ", 1);
+	}
+	i = -1 ;
+	while (str[++i])
+	{
+		if (str[i] != ' ' && i < wdt)
+			wdt += write(1, &str[i], 1);
+		else
+			wdt++;
+	}
+	if ((tab->pnt == -1 || tab->pnt == 1) && tab->wdt > (int)ft_strlen(str)
+		&& tab->minus == 1)
+	{
+		wdt = tab->prc;
+		while (wdt < tab->wdt)
+			wdt += write(1, " ", 1);
+	}
+	return (wdt);
+}
+
+int	ft_null(char *str, t_print *tab, int size)
 {
 	int		cont;
 	char	*temp;
@@ -58,12 +88,13 @@ int	ft_null(char *str, t_print *tab)
 
 	cont = 0;
 	temp = NULL;
-	temp = (char *)malloc(ft_strlen(str));
-	while (temp != NULL && str[cont])
+	temp = (char *)malloc(ft_strlen(str) + 1);
+	while (cont < size)
 	{
 		temp[cont] = str[cont];
 		cont++;
 	}
+	temp[cont] = '\0';
 	if (tab->wdt > (int)ft_strlen(str) || tab->pnt == -1
 		|| (tab->pnt == 1 && tab->prc < (int)ft_strlen(str)))
 	{
@@ -84,7 +115,7 @@ int	ft_printstr_format(char *str, t_print *tab)
 	char	*str_w;
 
 	if (str == NULL)
-		return (ft_null("(null)", tab));
+		return (ft_null("(null)", tab, 6));
 	if (tab->wdt > (int)ft_strlen(str))
 		str_w = ft_apply_width_str(str, tab);
 	else

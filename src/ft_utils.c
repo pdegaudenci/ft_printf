@@ -79,10 +79,7 @@ int	ft_eval_zero(int n, t_print *tab)
 
 	len = -1;
 	num_w = NULL;
-	if (n == 0 && (tab->pnt == 1 || tab->pnt == -1)
-		&& tab->prc == 0 && tab->wdt == 0)
-		return (0);
-	if (n == 0 && (tab->pnt == 1 || tab->pnt == -1)
+	if (n == 0 && tab->pnt == 1
 		&& tab->wdt > 0 && tab->prc == 0)
 	{
 		len = 0;
@@ -92,5 +89,8 @@ int	ft_eval_zero(int n, t_print *tab)
 		free(num_w);
 		return (len);
 	}
+	if (n == 0 && tab->pnt == 1
+		&& tab->prc == 0 && tab->wdt == 0)
+		return (0);
 	return (len);
 }
